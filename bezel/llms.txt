@@ -1,0 +1,25 @@
+# Bezel
+
+> Bezel is a fast, native macOS screenshot tool and screen recorder. It captures a region,
+> window, or the full screen, opens the capture in an annotation editor (arrows, text, shapes,
+> numbered steps, highlight, blur redaction), and records video with system audio, microphone
+> and a draggable camera bubble. It is a menu-bar app with no Dock icon.
+
+- Platform: macOS 14.0 Sonoma or later, Apple silicon and Intel
+- Engine: ScreenCaptureKit; overlay in AppKit + Core Graphics; written in Swift
+- Distribution: Mac App Store only
+- Pricing: Free forever for capture, clipboard copy, PNG save and the editor’s background + drop shadow.
+  Pro is $4.99/month, $47.99/year, or $129 one-time (Lifetime).
+- Free tier: region / window / full-screen capture, copy to clipboard, save as PNG, and the editor’s background and drop shadow. No watermark. Annotation tools and recording are Pro.
+- Pro tier: annotation editor, blur redaction, numbered steps, compare & split, screen recording,
+  camera bubble, mic and system audio, capture library, HEIC and PDF export, 2x Retina export.
+- Privacy: no account, no telemetry, no uploads. Captures stay on the user's Mac.
+- Shortcuts: Region Shift-Cmd-4, Record Shift-Cmd-5, Full screen Shift-Cmd-3,
+  Window Shift-Cmd-6, History Shift-Cmd-H.
+- Positioning: a lightweight alternative to CleanShot X, Shottr, Snagit and Xnapper.
+- Refunds: 14 days on direct purchases; App Store purchases via Apple's Report a Problem.
+
+## Pages
+- https://sirryanlynch.github.io/bezel/ : product overview, feature comparison, pricing
+- https://sirryanlynch.github.io/bezel/privacy.html : privacy policy
+- https://sirryanlynch.github.io/bezel/support.html : support, system requirements, refunds, terms and EULA
