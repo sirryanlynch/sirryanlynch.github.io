@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click: Screenshot & Record for Mac</title>
+<meta name="description" content="Click is a fast Mac screenshot tool and screen recorder. Capture a region, window, or full screen; annotate with arrows, text, blur and highlights; record video with a camera bubble; then copy or save in one click.">
+<link rel="canonical" href="https://sirryanlynch.github.io/click/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#e6e8ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#3a3b3f" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-title" content="Click">
+<meta name="keywords" content="screenshot tool mac, mac screenshot app, screen recorder mac, screenshot and annotate, annotate screenshots mac, screen capture mac, camera bubble screen recording, CleanShot X alternative, Shottr alternative, Snagit alternative, Xnapper alternative, blur screenshot mac, macOS screenshot editor">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Click">
+<meta property="og:title" content="Click: Screenshot & Record">
+<meta property="og:description" content="A fast Mac screenshot tool and screen recorder. Capture, annotate, redact, record with a camera bubble, and copy or save in one click.">
+<meta property="og:url" content="https://sirryanlynch.github.io/click/"><meta property="og:image" content="https://sirryanlynch.github.io/click/og-cover.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Click: Screenshot & Record">
+<meta name="twitter:image" content="https://sirryanlynch.github.io/click/og-cover.png">
+<link rel="icon" type="image/webp" href="assets/icon-light.webp">
+</head>
+<body>
+
+<style>
+/* ============================================================
+   CLICK — marketing site, v2
+   Built from the app's own design language (ClickUI / BrushedAluminum):
+   brushed aluminium ground · ink pills · one teal accent · SF type ·
+   hairlines · tracked caps · ultralight numerals. All product imagery is
+   the real app: editor footage rendered from editor.html, native crops
+   captured with Click itself.
+   ============================================================ */
+:root{
+  --alu-a:#eef0f3; --alu-b:#d8dbe0; --alu-c:#e5e7eb;
+  --panel:#f6f7f9; --panel-2:#ffffff; --panel-3:#eceef1;
+  --ink:#1c1c1e; --ink-2:#4e4f54; --ink-3:#6a6b71;
+  --hair:rgba(0,0,0,.09); --hair-2:rgba(0,0,0,.05);
+  --accent:#29b39e; --accent-deep:#1a8575; --accent-ink:#ffffff; --accent-wash:rgba(41,179,158,.12);
+  --warn:#eb5738;
+  --pill:#1c1c1e; --pill-ink:#ffffff;
+  --sheen:rgba(255,255,255,.55);
+  --brush-l:rgba(255,255,255,.07); --brush-d:rgba(0,0,0,.035);
+  --shadow:0 1px 1px rgba(0,0,0,.05),0 10px 30px -12px rgba(20,22,26,.28);
+  --shadow-win:0 0 0 .5px rgba(0,0,0,.18),0 2px 6px rgba(0,0,0,.08),0 40px 80px -30px rgba(20,22,26,.45);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  --gut:clamp(20px,4vw,40px); --maxw:1180px;
+  --icon:url("assets/icon-light.webp");
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --alu-a:#4a4b4f; --alu-b:#343538; --alu-c:#3f4044;
+    --panel:#1e1f22; --panel-2:#252629; --panel-3:#2c2d31;
+    --ink:#f2f2f3; --ink-2:#c3c4c8; --ink-3:#9a9ba1;
+    --hair:rgba(255,255,255,.12); --hair-2:rgba(255,255,255,.06);
+    --accent:#3fc9b0; --accent-deep:#68dcc6; --accent-ink:#0a1512; --accent-wash:rgba(63,201,176,.14);
+    --pill:#f2f2f3; --pill-ink:#141416;
+    --sheen:rgba(255,255,255,.12); --brush-l:rgba(255,255,255,.05); --brush-d:rgba(0,0,0,.10);
+    --shadow:0 1px 1px rgba(0,0,0,.3),0 10px 30px -12px rgba(0,0,0,.7);
+    --shadow-win:0 0 0 .5px rgba(255,255,255,.12),0 2px 6px rgba(0,0,0,.4),0 40px 80px -30px rgba(0,0,0,.85);
+    --icon:url("assets/icon-dark.webp");
+  }
+}
+:root[data-theme="dark"]{
+  --alu-a:#4a4b4f; --alu-b:#343538; --alu-c:#3f4044;
+  --panel:#1e1f22; --panel-2:#252629; --panel-3:#2c2d31;
+  --ink:#f2f2f3; --ink-2:#c3c4c8; --ink-3:#9a9ba1;
+  --hair:rgba(255,255,255,.12); --hair-2:rgba(255,255,255,.06);
+  --accent:#3fc9b0; --accent-deep:#68dcc6; --accent-ink:#0a1512; --accent-wash:rgba(63,201,176,.14);
+  --pill:#f2f2f3; --pill-ink:#141416;
+  --sheen:rgba(255,255,255,.12); --brush-l:rgba(255,255,255,.05); --brush-d:rgba(0,0,0,.10);
+  --shadow:0 1px 1px rgba(0,0,0,.3),0 10px 30px -12px rgba(0,0,0,.7);
+  --shadow-win:0 0 0 .5px rgba(255,255,255,.12),0 2px 6px rgba(0,0,0,.4),0 40px 80px -30px rgba(0,0,0,.85);
+  --icon:url("assets/icon-dark.webp");
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;
+  background:linear-gradient(135deg,var(--alu-a) 0%,var(--alu-b) 55%,var(--alu-c) 100%);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+/* brushed aluminium: fine horizontal grain + top-left sheen, fixed behind everything */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(900px 700px at 0% 0%,var(--sheen),transparent 70%),
+    repeating-linear-gradient(180deg,var(--brush-l) 0 .6px,transparent .6px 1.7px,var(--brush-d) 1.7px 2.1px,transparent 2.1px 3.4px);
+}
+img,video{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.03em;line-height:1.06;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.sect{padding-block:clamp(64px,9vw,120px)}
+.cap{
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+}
+.cap.accent{color:var(--accent-deep)}
+.lead{color:var(--ink-2);font-size:clamp(17px,1.7vw,20px);line-height:1.55;max-width:56ch}
+.h2{font-size:clamp(1.9rem,4vw,2.9rem);max-width:20ch}
+.center{text-align:center}
+.center .h2,.center .lead{margin-inline:auto}
+kbd{
+  font-family:var(--sans);font-size:.85em;font-weight:500;color:var(--ink);
+  background:var(--panel-2);border:1px solid var(--hair);border-bottom-width:2px;border-radius:6px;
+  padding:1px 7px;white-space:nowrap;
+}
+
+/* ---------- pills (PillButtonStyle) ---------- */
+.pill{
+  display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;
+  background:var(--pill);color:var(--pill-ink);font-weight:600;font-size:15.5px;letter-spacing:-.01em;
+  border:1px solid transparent;box-shadow:var(--shadow);white-space:nowrap;cursor:pointer;
+  transition:transform .15s ease,box-shadow .2s ease,opacity .2s;
+}
+.pill:hover{transform:translateY(-1px)}
+.pill:active{transform:scale(.985)}
+.pill.ghost{background:transparent;color:var(--ink);border-color:var(--hair);box-shadow:none}
+.pill.ghost:hover{background:var(--panel-2)}
+.pill.accent{background:var(--accent);color:var(--accent-ink)}
+.pill.sm{padding:8px 15px;font-size:14px}
+.pill .k{font-weight:500;opacity:.6;font-size:.9em}
+/* ---- newsletter signup ---- */
+.signup{max-width:44ch;margin:26px auto 0;text-align:center}
+.signup form{display:flex;gap:8px;align-items:stretch;justify-content:center;flex-wrap:wrap}
+.signup input[type=email]{flex:1 1 240px;min-width:0;padding:11px 14px;font:inherit;font-size:15px;
+  color:var(--ink);background:var(--panel);border:1px solid var(--hair);border-radius:999px;outline:none;transition:.15s}
+.signup input[type=email]::placeholder{color:var(--muted,#8a8a8f)}
+.signup input[type=email]:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.signup button{flex:0 0 auto;cursor:pointer;border:0}
+.signup .consent{margin-top:10px;font-size:12.5px;line-height:1.5;color:var(--muted,#8a8a8f)}
+.signup .msg{margin-top:10px;font-size:13.5px;min-height:1.2em}
+.signup .msg.ok{color:var(--accent)}
+.signup .msg.err{color:#d7414a}
+.signup[data-done="1"] form{display:none}
+/* Honeypot: real people never fill this; bots do. Hidden from sighted users AND screen readers. */
+.signup .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* ---------- top bar ---------- */
+.top{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--alu-a) 74%,transparent);
+  backdrop-filter:saturate(1.6) blur(18px);-webkit-backdrop-filter:saturate(1.6) blur(18px);
+  border-bottom:1px solid var(--hair-2);
+}
+.top-in{max-width:var(--maxw);margin:0 auto;padding:10px var(--gut);display:flex;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:-.02em}
+.ico{display:block;width:28px;height:28px;border-radius:7px;flex:0 0 auto;
+  background:var(--icon) center/cover no-repeat;box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.top nav{margin-left:auto;display:flex;align-items:center;gap:clamp(14px,2.4vw,28px)}
+.top nav a{font-size:14.5px;font-weight:500;color:var(--ink-2)}
+.top nav a:hover{color:var(--ink)}
+.top nav .pill{opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity .25s,transform .25s}
+.top.armed nav .pill{opacity:1;transform:none;pointer-events:auto}
+@media (max-width:700px){ .top nav a.hs{display:none} }
+
+/* ---------- hero ---------- */
+.hero{padding-top:clamp(56px,9vw,110px);text-align:center}
+.hero .cap{margin-bottom:22px}
+.hero h1{font-size:clamp(2.8rem,7.2vw,5.4rem);letter-spacing:-.045em;line-height:.98;font-weight:600;max-width:14ch;margin-inline:auto}
+.hero .lead{margin:24px auto 0;max-width:46ch}
+.hero .ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px}
+.hero .fine{margin-top:18px;font-size:13px;color:var(--ink-3);font-weight:500;letter-spacing:.01em}
+
+/* the mac window frame that holds real footage */
+.win{
+  position:relative;border-radius:12px;overflow:hidden;background:var(--panel);
+  box-shadow:var(--shadow-win);
+}
+.win .lights{
+  position:absolute;left:14px;top:0;height:52px;display:flex;align-items:center;gap:8px;z-index:2;
+}
+.win .lights i{width:12px;height:12px;border-radius:50%;display:block;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.18)}
+.win .lights i:nth-child(1){background:#ff5f57}.win .lights i:nth-child(2){background:#febc2e}.win .lights i:nth-child(3){background:#28c840}
+.win video,.win img{width:100%;height:auto}
+.hero-win{margin:clamp(44px,6vw,72px) auto 0;max-width:1180px}
+.hero-win .lights{height:32px}
+.footnote{margin-top:16px;font-size:13px;color:var(--ink-3);text-align:center}
+.footnote b{font-weight:600;color:var(--ink-2)}
+
+/* ---------- section head ---------- */
+.shead{display:flex;flex-direction:column;gap:14px;margin-bottom:clamp(30px,4vw,48px)}
+
+/* ---------- one key: three panels ---------- */
+.flow{display:grid;gap:18px;grid-template-columns:1fr}
+@media (min-width:760px){ .flow{grid-template-columns:1fr 1fr} }
+.panel{
+  background:var(--panel);border:1px solid var(--hair-2);border-radius:16px;overflow:hidden;
+  box-shadow:var(--shadow);display:flex;flex-direction:column;
+}
+.panel .art{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--panel-3)}
+.panel .txt{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px}
+.panel h3{font-size:19px;letter-spacing:-.02em}
+.panel p{color:var(--ink-2);font-size:15px;line-height:1.5}
+.panel .cap{margin-bottom:2px}
+
+/* desktop plate behind popover / overlay demos: the real capture as wallpaper-ish content */
+.desk{position:absolute;inset:0;background:var(--panel-3)}
+.desk img{position:absolute;left:0;top:0;width:100%;height:auto;object-fit:cover}
+.mbar{position:absolute;left:0;right:0;top:0;height:22px;background:rgba(28,28,30,.72);backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:flex-end;padding:0 10px;gap:12px}
+.mbar i{width:12px;height:12px;border-radius:2px;background:rgba(255,255,255,.35)}
+.mbar i.bz{border:1.5px solid rgba(255,255,255,.95);background:transparent;border-radius:3px;position:relative;width:13px;height:11px;box-shadow:0 0 0 3px rgba(255,255,255,.14);border-radius:3px}
+.mbar i.bz::after{content:"";position:absolute;inset:2px 3px;border-radius:50%;border:1.5px solid rgba(255,255,255,.9)}
+
+/* the menu-bar popover — rebuilt 1:1 from the app (dark vibrancy, real items and shortcuts) */
+.pop{
+  position:absolute;right:8px;top:30px;width:min(228px,76%);
+  background:rgba(38,39,42,.92);backdrop-filter:blur(20px) saturate(1.4);color:#f2f2f3;
+  border-radius:12px;box-shadow:0 12px 34px rgba(0,0,0,.45),0 0 0 .5px rgba(255,255,255,.14);
+  padding:8px;font-size:12.5px;
+}
+.pop::before{content:"";position:absolute;right:64px;top:-6px;width:12px;height:12px;background:rgba(38,39,42,.96);
+  transform:rotate(45deg);border-radius:2px}
+.pop .hd{display:flex;align-items:center;gap:8px;padding:6px 8px 8px;font-weight:600;font-size:13px}
+.pop .hd .pro{margin-left:auto;color:var(--accent);font-size:11.5px;font-weight:600;display:flex;gap:5px;align-items:center}
+.pop .row{display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:7px}
+.pop .row:hover{background:rgba(255,255,255,.08)}
+.pop .row .sc{margin-left:auto;color:rgba(255,255,255,.55);font-size:11.5px;letter-spacing:.02em}
+.pop .row svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.pop hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:5px 4px}
+.pop .row.quit{color:rgba(255,255,255,.55)}
+
+/* the capture overlay — rebuilt from the app: dim, teal frame, mode pill, hint */
+.ovl{position:absolute;inset:0;background:rgba(12,13,15,.42)}
+.ovl .selbox{position:absolute;left:14%;top:26%;width:60%;height:50%;
+  box-shadow:0 0 0 100vmax rgba(12,13,15,.42),0 0 0 2px var(--accent);border-radius:2px}
+.ovl .selbox i{position:absolute;width:8px;height:8px;background:#fff;border:2px solid var(--accent);border-radius:2px}
+.ovl .selbox i:nth-child(1){left:-5px;top:-5px}.ovl .selbox i:nth-child(2){right:-5px;top:-5px}
+.ovl .selbox i:nth-child(3){left:-5px;bottom:-5px}.ovl .selbox i:nth-child(4){right:-5px;bottom:-5px}
+.ovl .dim{position:absolute;left:14%;top:calc(76% + 8px);font-family:var(--mono);font-size:10.5px;color:#fff;
+  background:rgba(20,21,24,.86);padding:2px 7px;border-radius:5px;border:.5px solid rgba(255,255,255,.2)}
+.modepill{
+  position:absolute;left:50%;top:10px;transform:translateX(-50%);
+  display:flex;align-items:center;gap:4px;padding:4px;border-radius:999px;
+  background:rgba(28,28,30,.86);backdrop-filter:blur(12px);box-shadow:0 6px 20px rgba(0,0,0,.4),0 0 0 .5px rgba(255,255,255,.14);
+  font-size:11px;font-weight:600;color:#e8e8ea;white-space:nowrap;
+}
+.modepill span{padding:4px 10px;border-radius:999px}
+.modepill span.on{background:var(--accent);color:#08110f}
+.modepill .x{padding:4px 8px;color:rgba(255,255,255,.7)}
+.modepill .cam{padding:4px 8px;display:flex;align-items:center;gap:4px;border-right:1px solid rgba(255,255,255,.14);margin-right:2px}
+.modepill .cam svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.7}
+.ovl .hint{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-size:10.5px;color:rgba(255,255,255,.75)}
+
+/* quick access: real card chrome, our capture inside it */
+.qa{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64%;max-width:330px}
+.qa img.card{width:100%;height:auto;display:block;border-radius:14px}
+.qa .thumb{position:absolute;left:4.4%;top:5.2%;width:91.5%;height:66%;border-radius:8px;overflow:hidden;background:#111}
+.qa .thumb img{width:100%;height:100%;object-fit:cover;object-position:top left}
+
+
+/* ---------- the hand-off, on one screen ---------- */
+.cine{margin-top:18px}
+.screen{
+  position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:#101114;
+  box-shadow:0 0 0 1px rgba(0,0,0,.35),0 2px 0 rgba(255,255,255,.25) inset,0 50px 90px -40px rgba(0,0,0,.6);
+  border:6px solid #17181b;
+}
+.cam{position:absolute;inset:0;transform-origin:50% 50%;transition:transform 1.25s cubic-bezier(.55,.08,.2,1)}
+.wall{position:absolute;inset:0;background:
+  radial-gradient(90% 70% at 30% 30%,#dfe3e9 0%,#b9bfc8 55%,#8f96a1 100%)}
+.mbar.big{height:5.2%;padding:0 1.6%;gap:1.4%;background:rgba(20,21,24,.66)}
+.mbar.big i{width:1.1%;height:auto;aspect-ratio:1;border-radius:20%}
+.mbar.big i.bz{width:1.25%;aspect-ratio:13/11;box-shadow:none}
+.mbar.big .clock{margin-left:.6%;order:9;color:rgba(255,255,255,.92);font-size:clamp(6px,.95vw,12px);font-weight:600;letter-spacing:.01em}
+.cwin{position:absolute;left:9%;top:11%;width:70%;border-radius:8px;box-shadow:0 0 0 .5px rgba(0,0,0,.25),0 30px 60px -20px rgba(0,0,0,.55)}
+.cwin img{width:100%;height:auto}
+.win .lights.sm{height:24px;left:9px;gap:6px}
+.win .lights.sm i{width:8px;height:8px}
+.cwin::before{content:"";position:absolute;left:0;right:0;top:0;height:24px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(238,240,243,.9));border-bottom:.5px solid rgba(0,0,0,.1);z-index:1}
+.qa.card{position:absolute;left:1.6%;top:auto;bottom:2.4%;transform:none;width:19%;max-width:none;
+  transform-origin:50% 100%;transition:transform .6s cubic-bezier(.3,.8,.3,1),opacity .5s;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45))}
+.qa.card .thumb{left:3.8%;top:4.4%;width:92.4%;height:67.4%}
+.qa.card .hit{position:absolute;left:72%;top:80%;width:17%;aspect-ratio:1;border-radius:50%;background:rgba(41,179,158,0);box-shadow:0 0 0 0 rgba(41,179,158,0);transition:background .25s,box-shadow .25s}
+.ewin{position:absolute;left:13%;top:12%;width:74%;opacity:0;transform:translateY(14px) scale(.96);transform-origin:50% 60%;
+  transition:opacity .55s ease,transform .7s cubic-bezier(.3,.8,.3,1);box-shadow:0 0 0 .5px rgba(0,0,0,.28),0 40px 80px -24px rgba(0,0,0,.65)}
+.ewin img{width:100%;height:auto}
+.cine .cur{position:absolute;width:calc(1.5% * var(--cs,1));height:auto;aspect-ratio:19/23;left:var(--cx,60%);top:var(--cy,60%);z-index:9;
+  transition:left 1s cubic-bezier(.4,.7,.25,1),top 1s cubic-bezier(.4,.7,.25,1),width .6s;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
+.cine-cap{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:baseline;margin-top:16px;color:var(--ink-2);font-size:15px}
+.cine-cap p{max-width:60ch}.cine-cap b{color:var(--ink);font-weight:600}
+
+/* phases */
+.cine[data-p="rest"] .cam{transform:none}
+.cine[data-p="zoom"] .cam,
+.cine[data-p="click"] .cam{transform:scale(3.1) translate(38.9%,-34.4%)}
+.cine[data-p="click"] .qa.card{transform:scale(.97)}
+.cine[data-p="click"] .qa.card .hit{background:rgba(41,179,158,.22);box-shadow:0 0 0 .6vw rgba(41,179,158,.18)}
+.cine[data-p="open"] .cam{transform:none}
+.cine[data-p="open"] .qa.card,.cine[data-p="pan"] .qa.card{opacity:0;transform:scale(.9)}
+.cine[data-p="open"] .ewin,.cine[data-p="pan"] .ewin{opacity:1;transform:none}
+.cine[data-p="pan"] .cam{transform:scale(1.22) translate(0,-6%)}
+
+/* ---------- editor / tools ---------- */
+.tools{display:grid;gap:clamp(20px,3vw,36px);grid-template-columns:1fr;align-items:start}
+@media (min-width:960px){ .tools{grid-template-columns:minmax(0,1.5fr) minmax(280px,.8fr)} }
+.toollist{display:flex;flex-direction:column}
+.toollist .t{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--hair-2);align-items:start}
+.toollist .t:first-child{border-top:0;padding-top:0}
+.toollist .t .g{width:34px;height:34px;border-radius:9px;background:var(--panel-2);border:1px solid var(--hair-2);
+  display:grid;place-items:center;color:var(--ink)}
+.toollist .t .g svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.toollist .t b{display:block;font-weight:600;font-size:15.5px;letter-spacing:-.01em}
+.toollist .t span{display:block;color:var(--ink-2);font-size:14px;line-height:1.45;margin-top:2px}
+.strip{margin-top:18px;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--hair-2);background:var(--panel)}
+.strip img{width:100%}
+
+
+/* ---------- tool cards: real clips, play on hover ---------- */
+.tgrid{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:640px){ .tgrid{grid-template-columns:1fr 1fr} }
+@media (min-width:980px){ .tgrid{grid-template-columns:repeat(4,1fr);gap:14px} .tc figcaption{padding:14px 16px 16px} }
+.tc{margin:0;background:var(--panel);border:1px solid var(--hair-2);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);
+  transition:transform .25s ease,box-shadow .25s ease}
+.tc:hover{transform:translateY(-2px);box-shadow:0 1px 1px rgba(0,0,0,.05),0 22px 44px -18px rgba(20,22,26,.4)}
+.tv{position:relative;aspect-ratio:16/10;overflow:hidden;background:#eceef1}
+.tv img,.tv video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.tv video{opacity:0;transition:opacity .2s}
+.tc.playing .tv video{opacity:1}
+.tv::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08);pointer-events:none}
+.tc figcaption{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px}
+.tc figcaption b{font-weight:600;font-size:15.5px;letter-spacing:-.01em}
+.tc figcaption span{color:var(--ink-2);font-size:14px;line-height:1.45}
+
+/* ---------- record ---------- */
+.rec{display:grid;gap:clamp(20px,3vw,40px);grid-template-columns:1fr;align-items:center}
+@media (min-width:900px){ .rec{grid-template-columns:minmax(280px,.9fr) minmax(0,1.3fr)} }
+.rec-art{position:relative;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:var(--panel-3);box-shadow:var(--shadow);border:1px solid var(--hair-2)}
+.rec-art .base{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left;opacity:.9}
+.rec-art .hud{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:30%;max-width:200px;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.rec-art .bub{position:absolute;right:5%;bottom:6%;width:26%;max-width:150px;aspect-ratio:1;border-radius:50%;overflow:hidden;
+  box-shadow:0 14px 30px -8px rgba(0,0,0,.6),0 0 0 2px rgba(255,255,255,.75)}
+.rec-art .bub img{width:100%;height:100%;object-fit:cover;object-position:52% 50%;transform:scale(1.02)}
+.checks{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+.checks li{list-style:none;display:flex;gap:12px;align-items:flex-start;color:var(--ink-2);font-size:15.5px}
+.checks li::before{content:"";flex:0 0 18px;width:18px;height:18px;border-radius:5px;background:var(--accent);margin-top:2px;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6 9 17l-5-5' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat,linear-gradient(#000,#000);
+  -webkit-mask-composite:xor;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6 9 17l-5-5' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat,linear-gradient(#000,#000);mask-composite:exclude}
+.checks ul{padding:0;margin:0}
+
+/* ---------- ledger ---------- */
+.ledger-wrap{background:var(--panel);border:1px solid var(--hair-2);border-radius:16px;box-shadow:var(--shadow);padding:clamp(18px,3vw,34px);overflow-x:auto}
+.ledger{width:100%;border-collapse:collapse;font-size:15.5px;min-width:520px}
+.ledger th,.ledger td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--hair-2)}
+.ledger thead th{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--hair)}
+.ledger th:first-child,.ledger td:first-child{padding-left:0}
+.ledger .c{text-align:center;width:96px}
+.ledger .grp td{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);padding-top:24px}
+.ledger td small{display:block;color:var(--ink-3);font-size:13px;margin-top:1px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.dash{display:inline-block;width:12px;height:1.5px;background:var(--hair);vertical-align:middle}
+
+/* ---------- pricing ---------- */
+.plans{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:800px){ .plans{grid-template-columns:repeat(3,1fr)} }
+.plan{
+  background:var(--panel);border:1px solid var(--hair-2);border-radius:16px;padding:26px 24px 24px;
+  box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px;position:relative;
+}
+.plan.pick{background:var(--panel-2);box-shadow:0 0 0 1.5px var(--accent),var(--shadow)}
+.plan.pick::before{content:"Best value";position:absolute;top:-10px;left:22px;background:var(--accent);color:var(--accent-ink);
+  font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:5px}
+.price{display:flex;align-items:baseline;gap:6px;font-variant-numeric:tabular-nums}
+.price b{font-size:clamp(2.5rem,4.4vw,3.2rem);font-weight:200;letter-spacing:-.045em;line-height:1}
+.price span{color:var(--ink-3);font-size:14px;font-weight:500}
+.plan ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px;font-size:14.5px;color:var(--ink-2)}
+.plan li{position:relative;padding-left:16px}
+.plan li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:1.5px;background:var(--ink-3)}
+.plan .pill{width:100%;justify-content:center;margin-top:auto}
+.plan .note{font-size:12.5px;color:var(--ink-3)}
+.freebar{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;padding:20px 24px;margin-bottom:16px;
+  background:var(--panel);border:1px solid var(--hair-2);border-radius:16px;box-shadow:var(--shadow)}
+.freebar p{color:var(--ink-2);font-size:14.5px;max-width:48ch}
+.freebar .pill{margin-left:auto}
+.stores{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.store{display:inline-flex;align-items:center;gap:11px;padding:9px 18px 9px 14px;border-radius:12px;background:var(--pill);color:var(--pill-ink);box-shadow:var(--shadow);transition:transform .15s}
+.store:hover{transform:translateY(-1px)}
+.store.alt{background:transparent;color:var(--ink);border:1px solid var(--hair);box-shadow:none}
+.store svg{width:24px;height:24px;fill:currentColor}
+.store u{display:block;text-decoration:none;font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.68;line-height:1.4}
+.store strong{display:block;font-size:15.5px;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+.terms{margin-top:24px;padding:18px 20px;border-radius:12px;background:var(--panel-3);color:var(--ink-3);font-size:13px;line-height:1.6}
+.terms b{color:var(--ink-2);font-weight:600}
+.terms a{color:var(--accent-deep);text-decoration:underline;text-underline-offset:2px}
+
+/* ---------- faq ---------- */
+.faq{max-width:760px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--hair-2)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 34px 18px 0;position:relative;font-size:16.5px;font-weight:600;letter-spacing:-.015em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:12px;height:1.5px;background:var(--ink-2)}
+.faq summary::before{content:"";position:absolute;right:11.25px;top:50%;width:1.5px;height:12px;background:var(--ink-2);transform:translateY(-50%);transition:transform .2s,opacity .2s}
+.faq details[open] summary::before{opacity:0;transform:translateY(-50%) rotate(90deg)}
+.faq p{padding:0 0 20px;color:var(--ink-2);font-size:15.5px;max-width:68ch}
+
+/* ---------- closer ---------- */
+.closer{text-align:center;padding-block:clamp(40px,7vw,90px)}
+.closer .ico{width:96px;height:96px;border-radius:22px;margin:0 auto 26px;box-shadow:0 20px 40px -18px rgba(0,0,0,.45)}
+.closer h2{font-size:clamp(2rem,4.5vw,3.2rem);max-width:16ch;margin-inline:auto}
+.closer .ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
+.foot{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-start}
+.foot nav{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:14px;color:var(--ink-2)}
+.foot nav a:hover{color:var(--ink)}
+.foot .col{margin-left:auto;text-align:right;color:var(--ink-3);font-size:12.5px;line-height:1.7}
+@media (max-width:640px){ .foot .col{margin-left:0;text-align:left} }
+
+/* ---------- document sheets ---------- */
+.sheet{position:fixed;inset:0;z-index:120;display:none;background:var(--alu-a);overflow-y:auto}
+.sheet.open{display:block}
+.sheet-in{max-width:740px;margin:0 auto;padding:22px var(--gut) 90px}
+.sheet-top{position:sticky;top:0;display:flex;align-items:center;gap:14px;padding-block:12px;background:var(--alu-a);border-bottom:1px solid var(--hair-2);margin-bottom:34px;z-index:2}
+.sheet h2{font-size:clamp(1.6rem,3.2vw,2.1rem);margin-bottom:8px}
+.sheet h3{font-size:16.5px;margin-top:34px;margin-bottom:8px;letter-spacing:-.01em}
+.sheet p,.sheet li{color:var(--ink-2);font-size:15.5px;margin-bottom:12px;max-width:68ch}
+.sheet ul{padding-left:20px;margin:0 0 12px}
+.sheet a{color:var(--accent-deep);text-decoration:underline;text-underline-offset:2px}
+.sheet .stamp{font-size:12.5px;color:var(--ink-3)}
+
+/* reveal (from a visible resting state) */
+.rv{opacity:.001;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+
+<!-- ============================ TOP ============================ -->
+<header class="top" id="top">
+  <div class="top-in">
+    <a class="brand" href="#top"><span class="ico" role="img" aria-label="Click app icon"></span>Click</a>
+    <nav>
+      <a href="#capture" class="hs">Capture</a>
+      <a href="#edit" class="hs">Edit</a>
+      <a href="#record" class="hs">Record</a>
+      <a href="#pricing">Pricing</a>
+      <a class="pill sm" href="#pricing">Download <span class="k">free</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ============================ HERO ============================ -->
+<section class="wrap hero">
+  <div class="cap accent">For macOS 14 Sonoma and later</div>
+  <h1>Capture it. Mark it. Send it.</h1>
+  <p class="lead">Click lives in your menu bar. One key drops the overlay, and the capture lands in an editor built for arrows, redaction, and getting out of your way.</p>
+  <div class="ctas">
+    <a class="pill" href="#pricing">Download for Mac <span class="k">free</span></a>
+    <a class="pill ghost" href="#capture">How it works</a>
+  </div>
+  <p class="fine">Free for capture, forever · Pro free for 7 days, then $47.99 a year · No account</p>
+
+  <div class="win hero-win" id="heroWin">
+    <div class="lights"><i></i><i></i><i></i></div>
+    <video autoplay muted loop playsinline preload="auto" poster="assets/reel-poster.webp" aria-label="Highlight reel of the Click editor across three captures: blur, curved arrow, spotlight, text, numbered steps, highlight, compare, then export">
+      <source src="assets/reel.mp4" type="video/mp4">
+    </video>
+  </div>
+  <p class="footnote"><b>Actual editor footage.</b> Every cut is the interface that ships.</p>
+</section>
+
+<!-- ============================ CAPTURE ============================ -->
+<section class="wrap sect" id="capture">
+  <div class="shead center">
+    <div class="cap">Capture</div>
+    <h2 class="h2">One key. Then it's already open.</h2>
+    <p class="lead">Press <kbd>⌘`</kbd> from any app. Drag. The capture is on your clipboard, in a floating card, and one click from the editor.</p>
+  </div>
+
+  <div class="flow">
+    <!-- 1 · menu bar -->
+    <div class="panel rv">
+      <div class="art">
+        <div class="desk"><img src="assets/capture-chat.webp" alt="" style="top:22px;opacity:.55;filter:saturate(.9)"></div>
+        <div class="mbar"><i class="bz"></i><i></i><i style="width:26px;border-radius:3px"></i></div>
+        <div class="pop" aria-label="Click's menu-bar menu">
+          <div class="hd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="12" cy="12" r="3"/></svg>Click<span class="pro">♛ Pro</span></div>
+          <div class="row"><svg viewBox="0 0 24 24"><path d="M4 9V6a2 2 0 0 1 2-2h3M15 4h3a2 2 0 0 1 2 2v3M20 15v3a2 2 0 0 1-2 2h-3M9 20H6a2 2 0 0 1-2-2v-3"/></svg>Capture Region<span class="sc">⌘`</span></div>
+          <div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>Capture Window<span class="sc">⌘1</span></div>
+          <div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" stroke-dasharray="3 2"/></svg>Capture Full Screen<span class="sc">⌘2</span></div>
+          <hr>
+          <div class="row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>Record Screen<span class="sc">⇧⌘`</span></div>
+          <hr>
+          <div class="row quit"><svg viewBox="0 0 24 24"><path d="M12 3v8M6.3 7.3a8 8 0 1 0 11.4 0"/></svg>Quit Click</div>
+        </div>
+      </div>
+      <div class="txt">
+        <div class="cap">1 · Menu bar</div>
+        <h3>No Dock icon. No window.</h3>
+        <p>Click is a menu-bar agent. Four global shortcuts do the work; the menu is there for the day you forget one.</p>
+      </div>
+    </div>
+
+    <!-- 2 · overlay -->
+    <div class="panel rv">
+      <div class="art">
+        <div class="desk"><img src="assets/capture-chat.webp" alt="" style="top:22px"></div>
+        <div class="mbar"><i></i><i class="bz"></i><i style="width:26px;border-radius:3px"></i></div>
+        <div class="ovl">
+          <div class="modepill"><span class="cam"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg>⌄</span><span class="on">Region</span><span>Window</span><span>Screen</span><span class="x">✕</span></div>
+          <div class="selbox"><i></i><i></i><i></i><i></i></div>
+          <div class="dim">1280 × 640</div>
+          <div class="hint">Select a spot, then drag on the screen</div>
+        </div>
+      </div>
+      <div class="txt">
+        <div class="cap">2 · Overlay</div>
+        <h3>Region, window, or screen — same key.</h3>
+        <p>Switch modes from the pill without leaving the overlay. Arrow keys nudge, the readout shows pixels, and the screen stays put underneath.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 · quick access → editor: the whole hand-off, on one screen -->
+  <div class="cine rv" id="cine" data-p="rest" aria-label="Animation: after a capture, the Quick Access card floats at the bottom-left of the screen; the pointer clicks its Annotate button and the editor opens with the capture">
+    <div class="screen">
+      <div class="cam">
+        <div class="wall"></div>
+        <div class="mbar big"><span class="clock">Thu 9:41 AM</span><i class="bz"></i><i></i><i></i></div>
+        <div class="win cwin">
+          <div class="lights sm"><i></i><i></i><i></i></div>
+          <img src="assets/capture-chat.webp" alt="">
+        </div>
+        <div class="qa card">
+          <img class="card" src="assets/qa-card.webp" alt="">
+          <div class="thumb"><img src="assets/capture-chat.webp" alt=""></div>
+          <i class="hit"></i>
+        </div>
+        <div class="win ewin">
+          <div class="lights sm"><i></i><i></i><i></i></div>
+          <img src="assets/editor-clean.webp" alt="">
+        </div>
+        <svg class="cur" viewBox="0 0 19 23" aria-hidden="true"><path d="M2 1.6 2 19.2 6.6 14.8 9.6 21.6 12.6 20.2 9.7 13.6 15.9 13.4 Z" fill="#fff" stroke="rgba(0,0,0,.6)" stroke-width="1.1" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+    <div class="cine-cap">
+      <div class="cap">3 · Quick Access → Editor</div>
+      <p><b>Copied already. Now decide.</b> The card floats for eight seconds — copy again, save, or open the editor. Ignore it and it leaves on its own.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ EDIT ============================ -->
+<section class="wrap sect" id="edit" style="padding-top:0">
+  <div class="shead">
+    <div class="cap">Edit</div>
+    <h2 class="h2">Annotation that respects the picture.</h2>
+    <p class="lead">A chat thread, a design file, a retouch in progress — every mark stays a live object until you export. Move it, restyle it, right-click it and make it the default for that tool.</p>
+  </div>
+
+  <div class="tools">
+    <div>
+      <div class="win rv">
+        <div class="lights"><i></i><i></i><i></i></div>
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/editor-annotated.webp" aria-label="The Click editor: an arrow, a text note, numbered steps and a blur redaction are added to a capture, then it is copied">
+          <source src="assets/annotate.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="strip rv" aria-label="The editor toolbar"><img src="assets/toolbar.webp" alt="The editor toolbar" width="1600" height="58"></div>
+    </div>
+    <div class="toollist">
+      <div class="t"><div class="g"><svg viewBox="0 0 24 24"><path d="M4 20 20 4M11 4h9v9"/></svg></div><div><b>Live objects, not paint</b><span>Every mark stays selectable until export. Move it, restyle it, delete it, or right-click and save it as that tool's default.</span></div></div>
+      <div class="t"><div class="g"><svg viewBox="0 0 24 24"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2"/></svg></div><div><b>Export the way you send</b><span>Copy, or save as PNG, HEIC or PDF at 1× or 2×. The full-resolution original is always kept in the library.</span></div></div>
+      <div class="t"><div class="g"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3v18"/></svg></div><div><b>Defaults that stick</b><span>Colour, thickness, arrowhead, opacity — set them once in Settings › Tool defaults and every capture opens ready.</span></div></div>
+    </div>
+  </div>
+
+  <div class="shead" style="margin-top:clamp(48px,6vw,80px)">
+    <div class="cap">Tools</div>
+    <h2 class="h2" style="font-size:clamp(1.6rem,3vw,2.2rem)">Eight tools. Each one, in the real editor.</h2>
+    <p class="lead">Hover a card to watch it drawn.</p>
+  </div>
+  <div class="tgrid">
+    <figure class="tc rv"><div class="tv"><img src="assets/tool-arrow.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-arrow.webp"><source src="assets/tool-arrow.mp4" type="video/mp4"></video></div><figcaption><b>Curved arrow</b><span>Draw it, then bend it — the midpoint handles pull the curve. Straight, curved or elbowed; swap the head without redrawing.</span></figcaption></figure>
+    <figure class="tc rv"><div class="tv"><img src="assets/tool-blur.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-blur.webp"><source src="assets/tool-blur.mp4" type="video/mp4"></video></div><figcaption><b>Blur</b><span>Redact the phone number, not the whole message. Blur, pixelate or solid, with intensity on a slider.</span></figcaption></figure>
+    <figure class="tc rv"><div class="tv"><img src="assets/tool-spotlight.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-spotlight.webp"><source src="assets/tool-spotlight.mp4" type="video/mp4"></video></div><figcaption><b>Spotlight</b><span>Dim everything except the thing you mean. One drag over the artboard that matters.</span></figcaption></figure>
+    <figure class="tc rv"><div class="tv"><img src="assets/tool-text.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-text.webp"><source src="assets/tool-text.mp4" type="video/mp4"></video></div><figcaption><b>Text</b><span>Type on the picture. Resize the box and the text reflows; double-click to edit later.</span></figcaption></figure>
+    <figure class="tc rv"><div class="tv"><img src="assets/tool-number.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-number.webp"><source src="assets/tool-number.mp4" type="video/mp4"></video></div><figcaption><b>Numbered steps</b><span>Badges count themselves. Delete one and the rest renumber.</span></figcaption></figure>
+    <figure class="tc rv"><div class="tv"><img src="assets/tool-shape.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-shape.webp"><source src="assets/tool-shape.mp4" type="video/mp4"></video></div><figcaption><b>Shape</b><span>Rectangle or ellipse, outlined or filled. Corner radius and stroke on a slider.</span></figcaption></figure>
+    <figure class="tc rv"><div class="tv"><img src="assets/tool-highlight.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-highlight.webp"><source src="assets/tool-highlight.mp4" type="video/mp4"></video></div><figcaption><b>Highlight</b><span>A marker band that sits under the text, so what’s underneath stays readable.</span></figcaption></figure>
+    <figure class="tc rv"><div class="tv"><img src="assets/tool-compare.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-compare.webp"><source src="assets/tool-compare.mp4" type="video/mp4"></video></div><figcaption><b>Compare &amp; split</b><span>Two versions in one frame. Drag the knob to set the gap; swap either side any time.</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- ============================ RECORD ============================ -->
+<section class="wrap sect" id="record" style="padding-top:0">
+  <div class="rec">
+    <div>
+      <div class="cap">Record</div>
+      <h2 class="h2" style="margin-top:14px">Some things are easier shown.</h2>
+      <p class="lead" style="margin-top:16px">Same overlay, same key with a shift. Record a region, a window or the whole screen.</p>
+      <ul class="checks">
+        <li>System audio and microphone, each on its own switch</li>
+        <li>Camera bubble that stays round and stays out of the way</li>
+        <li>A finished clip you can copy, save, or keep in the library</li>
+      </ul>
+    </div>
+    <div class="rec-art rv">
+      <img class="base" src="assets/editor-clean.webp" alt="">
+      <img class="hud" src="assets/rec-hud.webp" alt="Click's recording control: a red timer reading 0:06 and a Stop button">
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LEDGER ============================ -->
+<section class="wrap sect" id="compare" style="padding-top:0">
+  <div class="shead center">
+    <div class="cap">Free vs Pro</div>
+    <h2 class="h2">Capture is free. Forever, without an asterisk.</h2>
+    <p class="lead">No watermark, no export limit, no expiry. Free is free permanently — the 7-day trial is for Pro, not for capture.</p>
+  </div>
+  <div class="ledger-wrap rv">
+    <table class="ledger">
+      <thead><tr><th>Capability</th><th class="c">Free</th><th class="c">Pro</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td colspan="3">Capture</td></tr>
+        <tr><td>Region, window and full-screen capture <small>Crosshair, live pixel readout, arrow-key nudge</small></td><td class="c"><span class="dot"></span></td><td class="c"><span class="dot"></span></td></tr>
+        <tr><td>Copy to clipboard · Quick Access card</td><td class="c"><span class="dot"></span></td><td class="c"><span class="dot"></span></td></tr>
+        <tr><td>Save as PNG</td><td class="c"><span class="dot"></span></td><td class="c"><span class="dot"></span></td></tr>
+        <tr class="grp"><td colspan="3">Edit</td></tr>
+        <tr><td>Annotation editor <small>Arrows, shapes, text, highlight, spotlight, crop</small></td><td class="c"><span class="dash"></span></td><td class="c"><span class="dot"></span></td></tr>
+        <tr><td>Blur &amp; redaction · Numbered steps</td><td class="c"><span class="dash"></span></td><td class="c"><span class="dot"></span></td></tr>
+        <tr><td>Compare &amp; split</td><td class="c"><span class="dash"></span></td><td class="c"><span class="dot"></span></td></tr>
+        <tr class="grp"><td colspan="3">Record</td></tr>
+        <tr><td>Screen recording · Camera bubble · Mic &amp; system audio</td><td class="c"><span class="dash"></span></td><td class="c"><span class="dot"></span></td></tr>
+        <tr class="grp"><td colspan="3">Keep</td></tr>
+        <tr><td>Capture library <small>Recents, folders, history</small></td><td class="c"><span class="dash"></span></td><td class="c"><span class="dot"></span></td></tr>
+        <tr><td>HEIC &amp; PDF export · 2× Retina export</td><td class="c"><span class="dash"></span></td><td class="c"><span class="dot"></span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================ PRICING ============================ -->
+<section class="wrap sect" id="pricing" style="padding-top:0">
+  <div class="shead center">
+    <div class="cap">Pricing</div>
+    <h2 class="h2">Start free. Upgrade if it earns it.</h2>
+    <p class="lead">Buy direct or on the Mac App Store — the app is identical. One licence covers the Macs you personally use.</p>
+  </div>
+
+  <div class="freebar rv">
+    <div><div class="cap" style="margin-bottom:6px">Click Free</div><div class="price"><b style="font-size:2rem">$0</b><span>forever</span></div></div>
+    <p>Region, window and full-screen capture, clipboard copy and PNG save, plus the editor’s background and drop shadow. No watermark, no account, no expiry — this tier never runs out.</p>
+    <a class="pill ghost" href="#download">Download</a>
+  </div>
+
+  <div class="plans">
+    <div class="plan rv">
+      <div class="cap">Pro · Monthly</div>
+      <div class="price"><b>$4.99</b><span>/ month</span></div>
+      <ul><li>Everything in Free</li><li>Every annotation tool + recording</li><li>Recording + camera bubble</li><li>Library, HEIC/PDF, 2× export</li><li>Cancel any time</li></ul>
+      <a class="pill ghost" href="#download">Subscribe monthly</a>
+      <p class="note">Renews monthly until cancelled.</p>
+    </div>
+    <div class="plan pick rv">
+      <div class="cap">Pro · Yearly</div>
+      <div class="price"><b>$47.99</b><span>/ year</span></div>
+      <ul><li><b>7 days free</b>, then $47.99</li><li>Everything in Pro Monthly</li><li>$4.00 a month, billed yearly</li><li>All updates while subscribed</li><li>Cancel any time</li></ul>
+      <a class="pill accent" href="#download">Start 7-day free trial</a>
+      <p class="note">Free for 7 days, then renews yearly until cancelled.</p>
+    </div>
+    <div class="plan rv">
+      <div class="cap">Pro · Lifetime</div>
+      <div class="price"><b>$129</b><span>once</span></div>
+      <ul><li>Everything in Pro, permanently</li><li>No renewal, no expiry</li><li>All future updates</li><li>Moves between your Macs</li><li>Refunds handled by Apple</li></ul>
+      <a class="pill " href="#download">Buy lifetime</a>
+      <p class="note">One payment. Yours to keep.</p>
+    </div>
+  </div>
+
+  <div class="stores" id="download">
+    <a class="store" href="https://apps.apple.com/app/click">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.6.9-.8 0-1.9-.9-3.1-.8-1.6 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 3 2.3 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.1.8 1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.7-3.6zM14.2 5.5c.7-.8 1.1-2 1-3.2-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.5 2.9-1.3z"/></svg>
+      <span><u>Download on the</u><strong>Mac App Store</strong></span>
+    </a>
+  </div>
+
+  <div class="terms">
+    <b>Subscription terms.</b> Click Pro is offered as a monthly ($4.99) or yearly ($47.99) auto-renewing subscription, or as a one-time Lifetime purchase ($129). <b>Both subscription plans include a 7-day free trial for new subscribers</b> — full access for 7 days at no charge, after which the plan you chose renews at its stated price unless cancelled at least 24 hours before the trial ends. One trial per Apple Account, across both plans. Subscriptions renew at the stated price unless cancelled at least 24 hours before the end of the current period. <b>Mac App Store purchases</b> are charged to your Apple Account and managed in System Settings › Apple Account › Media &amp; Purchases › Subscriptions; any unused portion of a free period is forfeited on purchase. See the <a href="#" data-sheet="legal">Terms &amp; EULA</a>, <a href="#" data-sheet="privacy">Privacy Policy</a> and <a href="#" data-sheet="support">refund policy</a>.
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="wrap sect" id="faq" style="padding-top:0">
+  <div class="shead center"><div class="cap">Questions</div><h2 class="h2">The short answers.</h2></div>
+  <div class="faq">
+    <details open><summary>What is the best screenshot tool for Mac?</summary><p>Click is a fast, native macOS screenshot tool that captures a region, window or full screen, then lets you annotate with arrows, text, shapes, blur and highlights before copying or saving. It also records video with a camera bubble, making it a lightweight alternative to CleanShot X, Shottr, Snagit and Xnapper.</p></details>
+    <details><summary>How do I annotate a screenshot on a Mac?</summary><p>Take a screenshot with Click and open the editor from the Quick Access card. Add arrows, text, rectangles, ellipses, numbered steps, highlights, or a blur to hide sensitive information. Every mark stays editable until you export, then copy to the clipboard or save as PNG, HEIC or PDF.</p></details>
+    <details><summary>Can Click record my screen with my webcam?</summary><p>Yes. Click records a region, a window or the full screen with optional system audio and microphone, plus a draggable camera bubble. Screen recording is a Pro feature.</p></details>
+    <details><summary>Does Click upload my screenshots anywhere?</summary><p>No. Captures are written to the folder you choose and stay on your Mac. Click has no account system and no background uploader. The only thing it ever sends is anonymous usage statistics — which feature was used, never what you captured — and you can switch those off in Settings.</p></details>
+    <details><summary>Is there a free trial?</summary><p>Yes. Monthly and Yearly both start with a 7-day free trial — one per Apple Account, whichever plan you start it on. You get everything — every annotation tool, recording, the library, HEIC and PDF export — for 7 days at no charge. You are not charged when the trial starts, Apple reminds you before it ends, and cancelling takes one click. Capture, and the editor’s background and drop shadow, stay free permanently and need no trial at all.</p></details>
+    <details><summary>Can I get a refund?</summary><p>Direct purchases: yes, within 14 days, no questions asked. App Store purchases are refunded by Apple through Report a Problem, since Apple is the seller of record there.</p></details>
+    <details><summary>Why does Click need Screen Recording permission?</summary><p>macOS treats every kind of screen capture, including still screenshots, as screen recording. Click asks once, on first capture, with the standard system prompt. Camera and microphone are only requested if you turn them on for a recording.</p></details>
+  </div>
+</section>
+
+<!-- ============================ CLOSER ============================ -->
+<section class="wrap closer">
+  <span class="ico" role="img" aria-label="Click app icon"></span>
+  <h2>Take the next screenshot with it.</h2>
+  <p class="lead" style="margin:16px auto 0;max-width:40ch">Free to download. You'll know within a day whether Pro is worth $4.00 a month to you.</p>
+  <div class="ctas">
+    <a class="pill" href="#pricing">Download for Mac <span class="k">free</span></a>
+    <a class="pill ghost" href="https://apps.apple.com/app/click">Mac App Store</a>
+  </div>
+
+  <!-- ============================================================================================
+       NEWSLETTER SIGNUP — MailerLite
+       Posts to the account's public embedded-form endpoint. That is a public form ID, not an API key
+       — an API key must never appear in a page or in the app, because both ship to users and anyone
+       can read it out.
+
+       Submits through a hidden iframe rather than fetch(): MailerLite's endpoint returns no CORS
+       headers, so a cross-origin fetch is blocked by the browser before it ever reaches them. A form
+       POST targeting an iframe has never been subject to CORS. The trade-off is that we cannot read
+       the response, so success is reported optimistically. With single opt-in that is a real (small)
+       compromise: a rejected address still shows the thank-you. Acceptable for a newsletter; it would
+       not be for anything the user depends on succeeding.
+       ============================================================================================ -->
+  <div class="signup" id="signup">
+    <form id="signupForm" method="post" target="ml_sink" novalidate>
+      <label class="hp" aria-hidden="true">Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      <label for="signupEmail" class="hp">Email address</label>
+      <input id="signupEmail" type="email" name="fields[email]" required autocomplete="email" placeholder="you@example.com">
+      <input type="hidden" name="ml-submit" value="1">
+      <input type="hidden" name="anticsrf" value="true">
+      <button class="pill accent" type="submit">Get release notes</button>
+    </form>
+    <iframe name="ml_sink" title="MailerLite signup target" style="display:none" aria-hidden="true"></iframe>
+    <p class="consent">Occasional release notes and the odd feature survey. No spam, unsubscribe in one click. We never share your address.</p>
+    <p class="msg" id="signupMsg" role="status" aria-live="polite"></p>
+  </div>
+  <p class="fine" style="margin-top:18px;font-size:13px;color:var(--ink-3)">macOS 14 or later · Apple silicon &amp; Intel · Notarized · 14-day refund</p>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a class="brand" href="#top"><span class="ico" aria-hidden="true"></span>Click</a>
+      <nav>
+        <a href="#capture">Capture</a><a href="#edit">Edit</a><a href="#record">Record</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+        <a href="/support.html">Support</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/support.html#terms">Terms &amp; EULA</a>
+      </nav>
+    </div>
+    <div class="col">Click 1.0 · macOS 14+<br>Sold on the Mac App Store<br>© 2026 Click</div>
+  </div>
+</footer>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-in">
+    <div class="sheet-top"><a class="brand" href="#" data-close><span class="ico" aria-hidden="true"></span>Click</a><button class="pill ghost sm" style="margin-left:auto" data-close type="button">Close</button></div>
+    <div id="sheetBody"></div>
+  </div>
+</div>
+
+<template id="doc-privacy">
+  <h2 id="sheetTitle">Privacy Policy</h2>
+  <p class="stamp">Last updated 18 September 2026</p>
+  <p>Click is a screenshot and screen-recording app for macOS. It is built so that your captures never leave your Mac unless you send them somewhere yourself.</p>
+
+  <h3>What Click never collects</h3>
+  <ul>
+    <li>No screenshots or recordings, and nothing about their contents &mdash; no pixels, no text read out of an image, no window titles, no file names.</li>
+    <li>No account. Click has no sign-up, no login and no user profile.</li>
+    <li>No advertising identifiers, and no tracking of you across other apps or websites.</li>
+    <li>No contacts, location, browsing history, or file listings outside the folder you choose for captures.</li>
+  </ul>
+
+  <h3>Anonymous usage statistics</h3>
+  <p>Click sends anonymous product-interaction signals so we can see which features people actually use. A signal is an event name from a fixed list we wrote &mdash; the app launched, an annotation tool was used, a capture mode was chosen &mdash; plus short labels we choose ourselves, such as <code>arrow</code> or <code>region</code>. Nothing you type, capture or open is ever included.</p>
+  <p>These signals are not linked to your identity and are not used to track you. Our analytics processor is <a href="https://telemetrydeck.com/privacy/" rel="noopener">TelemetryDeck</a>, which is designed so that individual users cannot be identified or re-identified.</p>
+  <p><b>You can turn this off.</b> Open Click Settings &rsaquo; General and switch off <b>Share anonymous usage statistics</b>. It is on by default; switching it off stops the analytics SDK from starting at all, so nothing is sent.</p>
+
+  <h3>What stays on your Mac</h3>
+  <p>Captures are written to the folder you pick in Settings. The recents list, your tool defaults and your preferences are stored in Click's own sandbox container on your Mac and are deleted when you delete the app.</p>
+
+  <h3>Network requests</h3>
+  <p>Click makes network requests in exactly three cases:</p>
+  <ul>
+    <li>Anonymous usage signals, as described above, while that setting is on.</li>
+    <li>The newsletter, if you opt in by entering your address in Settings &rsaquo; About. Your address is sent to our mailing provider, MailerLite, and used only to email you about Click. There is an unsubscribe link in every message.</li>
+    <li>Opening a link you clicked, such as this policy, in your browser.</li>
+  </ul>
+  <p>Click has no updater of its own &mdash; the Mac App Store handles updates. Nothing else is uploaded, and there is no background sync.</p>
+
+  <h3>Purchases</h3>
+  <p>Click Pro is sold only through the Mac App Store. Purchases are processed by Apple, who is the seller. Click receives an entitlement from Apple that says whether Pro is active; it never receives your name, address or payment details.</p>
+
+  <h3>System permissions</h3>
+  <p>macOS requires Screen Recording permission for any screen capture, including still screenshots. Camera and Microphone permissions are requested only when you enable them for a recording. All three are granted by you in System Settings and can be revoked there at any time.</p>
+
+  <h3>Your rights</h3>
+  <p>Because Click holds no account, there is normally nothing of yours for us to export or delete. If you have emailed support or joined the newsletter, write to <a href="mailto:SirRyanLynch@gmail.com">SirRyanLynch@gmail.com</a> and we will delete that correspondence and your address on request. Anonymous usage signals carry no identifier, so they cannot be traced back to you or individually deleted &mdash; switching the setting off stops any further signals.</p>
+
+  <h3>Children</h3>
+  <p>Click is not directed at children under 13 and collects no personal information from anyone.</p>
+
+  <h3>Changes</h3>
+  <p>If this policy changes materially, the date above changes and the new version is published here before it takes effect.</p>
+
+  <h3>Contact</h3>
+  <p><a href="mailto:SirRyanLynch@gmail.com">SirRyanLynch@gmail.com</a></p>
+</template>
+
+<template id="doc-support">
+  <h2 id="sheetTitle">Support</h2>
+  <p class="stamp">Typical reply within one business day</p>
+  <p>Email <a href="mailto:SirRyanLynch@gmail.com">SirRyanLynch@gmail.com</a>. Include your macOS version and &mdash; if something looks wrong &mdash; a screenshot. You have the tool.</p>
+
+  <h3>System requirements</h3>
+  <ul>
+    <li>macOS 14.0 Sonoma or later</li>
+    <li>Apple silicon or Intel</li>
+    <li>Screen Recording permission (System Settings &rsaquo; Privacy &amp; Security)</li>
+    <li>Camera and Microphone permission only if you record with them</li>
+    <li>Microphone recording requires macOS 15 Sequoia or later</li>
+  </ul>
+
+  <h3>Common fixes</h3>
+  <p><b>The capture overlay is blank or black.</b> macOS has not granted Screen Recording. Open System Settings &rsaquo; Privacy &amp; Security &rsaquo; Screen &amp; System Audio Recording, enable Click, then quit and reopen it &mdash; macOS requires a relaunch after granting.</p>
+  <p><b>The keyboard shortcut does nothing.</b> Another app has claimed it. macOS gives the shortcut to whichever app registered it first; free it in the other app, or change the system shortcut in System Settings &rsaquo; Keyboard &rsaquo; Keyboard Shortcuts &rsaquo; Screenshots.</p>
+  <p><b>Pro features are still locked after purchase.</b> Open Click Settings &rsaquo; About and choose <b>Restore Purchases</b>, making sure you are signed in with the Apple Account you bought on.</p>
+  <p><b>The menu-bar icon is missing.</b> macOS hides menu-bar items when the bar runs out of room. Quit an app that owns a menu-bar icon, or widen the bar, and Click reappears. The keyboard shortcuts keep working either way.</p>
+
+  <h3 id="refunds">Refunds</h3>
+  <p>Click is sold only through the Mac App Store, so refunds are handled by Apple, who is the seller of record. Use <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a> with the Apple Account you purchased on.</p>
+
+  <h3 id="terms">Terms of Use &amp; Licence</h3>
+  <p>Click is licensed, not sold. A Pro licence covers use by one person on the Macs they personally use. You may not redistribute, resell or sublicense the app.</p>
+  <p><b>Free trial.</b> Click Pro Monthly and Click Pro Yearly each start with 7 days free for new subscribers &mdash; one trial per Apple Account, across both plans. Cancel any time before the trial ends and you are not charged; otherwise it converts to a paid period automatically. Cancel in System Settings &rsaquo; Apple Account &rsaquo; Media &amp; Purchases &rsaquo; Subscriptions.</p>
+  <p><b>Subscriptions.</b> Click Pro Monthly ($4.99/month) and Click Pro Yearly ($47.99/year) renew automatically at the stated price until cancelled. Cancel at least 24 hours before the period ends to avoid the next charge. Click Pro Lifetime ($129) is a one-time purchase and does not renew.</p>
+  <p><b>Managing a subscription.</b> System Settings &rsaquo; Apple Account &rsaquo; Media &amp; Purchases &rsaquo; Subscriptions. Any unused portion of a free trial is forfeited when a subscription is purchased.</p>
+  <p><b>Warranty.</b> Click is provided "as is", without warranty of any kind. To the maximum extent permitted by law, liability is limited to the amount you paid for the app in the twelve months preceding the claim.</p>
+  <p>Apps distributed through the Mac App Store are additionally governed by <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener">Apple's Licensed Application End User Licence Agreement</a>, which prevails over this document to the extent of any conflict.</p>
+
+  <h3 id="acknowledgements">Acknowledgements</h3>
+  <p>Click's editor bundles <a href="https://github.com/niklasvh/html2canvas" rel="noopener">html2canvas</a>, &copy; Niklas von Hertzen, used under the MIT Licence.</p>
+
+  <h3>Contact</h3>
+  <p><a href="mailto:SirRyanLynch@gmail.com">SirRyanLynch@gmail.com</a></p>
+</template>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"SoftwareApplication","name":"Click: Screenshot & Record",
+  "operatingSystem":"macOS 14.0 or later","applicationCategory":"UtilitiesApplication",
+  "applicationSubCategory":"Screenshot & Screen Recording",
+  "description":"Click is a fast macOS screenshot tool and screen recorder. Capture a region, window, or full screen; annotate with arrows, text, shapes, blur, and highlights; record video with a camera bubble; and copy or save instantly.",
+  "url":"https://sirryanlynch.github.io/click/","downloadUrl":"https://apps.apple.com/app/click","softwareVersion":"1.0",
+  "featureList":["Region, window, and full-screen capture","Annotate: arrows, text, shapes, numbered steps, blur, highlight","Screen recording with system audio, microphone, and camera bubble","Side-by-side compare and split screenshots","One-click copy to clipboard or save to file","Menu-bar app with global keyboard shortcuts"],
+  "offers":[
+    {"@type":"Offer","name":"Click Free","price":"0","priceCurrency":"USD"},
+    {"@type":"Offer","name":"Click Pro Monthly","price":"4.99","priceCurrency":"USD"},
+    {"@type":"Offer","name":"Click Pro Yearly","price":"47.99","priceCurrency":"USD"},
+    {"@type":"Offer","name":"Click Pro Lifetime","price":"129.00","priceCurrency":"USD"}
+  ]
+}
+</script><script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What is the best screenshot tool for Mac?","acceptedAnswer":{"@type":"Answer","text":"Click is a fast, native macOS screenshot tool that captures a region, window, or full screen, then lets you annotate with arrows, text, shapes, blur and highlights before copying or saving. It also records video with a camera bubble, making it a lightweight alternative to CleanShot X, Shottr, Snagit and Xnapper."}},
+    {"@type":"Question","name":"How do I annotate a screenshot on a Mac?","acceptedAnswer":{"@type":"Answer","text":"Take a screenshot with Click and the editor opens on the capture. Use the toolbar to add arrows, text, rectangles, ellipses, numbered steps, highlights, or a blur to hide sensitive information. Every mark stays editable until you export, then copy to the clipboard or save as PNG, HEIC or PDF."}},
+    {"@type":"Question","name":"Can Click record my screen with my webcam?","acceptedAnswer":{"@type":"Answer","text":"Yes. Click records a region, a window, or the full screen with optional system audio and microphone, plus a draggable camera bubble you can place in any corner. Screen recording is a Pro feature."}},
+    {"@type":"Question","name":"Does Click upload my screenshots anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Captures are written to the folder you choose and stay on your Mac. Click has no account system and no background uploader. The only thing it ever sends is anonymous usage statistics — which feature was used, never what you captured — and you can switch those off in Settings."}},
+    {"@type":"Question","name":"Can I get a refund for Click?","acceptedAnswer":{"@type":"Answer","text":"Direct purchases are refundable within 14 days for any reason. Mac App Store purchases are refunded by Apple through Report a Problem, since Apple is the seller of record there."}}
+  ]
+}
+</script>
+
+<script>
+(function(){
+  "use strict";
+  var top = document.getElementById("top"), hero = document.getElementById("heroWin");
+  if (hero && "IntersectionObserver" in window){
+    new IntersectionObserver(function(es){ top.classList.toggle("armed", !es[0].isIntersecting); }, {rootMargin:"-80px 0px 0px 0px"}).observe(hero);
+  }
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var rv = document.querySelectorAll(".rv");
+  if (reduce || !("IntersectionObserver" in window)) rv.forEach(function(e){ e.classList.add("in"); });
+  else {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); }, {threshold:.12, rootMargin:"0px 0px -6% 0px"});
+    rv.forEach(function(e){ io.observe(e); });
+    setTimeout(function(){ rv.forEach(function(e){ e.classList.add("in"); }); }, 2500); /* never leave anything hidden */
+  }
+
+  /* ---------- the hand-off sequence ---------- */
+  var cine = document.getElementById("cine");
+  if (cine){
+    var cur = cine.querySelector(".cur");
+    function P(p){ cine.setAttribute("data-p", p); }
+    function M(x,y,s){ cur.style.setProperty("--cx", x); cur.style.setProperty("--cy", y); cur.style.setProperty("--cs", s||1); }
+    var steps = [
+      [0,    function(){ P("rest"); M("58%","62%",1); }],
+      [700,  function(){ P("zoom"); }],
+      [1500, function(){ M("16.6%","94.2%",0.34); }],
+      [2500, function(){ P("click"); }],
+      [3050, function(){ P("open"); M("58%","62%",1); }],
+      [4300, function(){ P("pan"); }],
+      [7200, function(){ P("rest"); }]
+    ];
+    var timers = [], on = false;
+    function run(){ steps.forEach(function(s){ timers.push(setTimeout(s[1], s[0])); }); timers.push(setTimeout(function(){ if (on) run(); }, 8400)); }
+    var api = { start:function(){ if (on) return; on = true; run(); }, stop:function(){ on = false; timers.forEach(clearTimeout); timers = []; } };
+    if (reduce){ P("pan"); M("58%","62%",1); }
+    else if ("IntersectionObserver" in window){ new IntersectionObserver(function(es){ es[0].isIntersecting ? api.start() : api.stop(); }, {threshold:.35}).observe(cine); }
+    else api.start();
+  }
+
+  /* ---------- tool cards ---------- */
+  var canHover = window.matchMedia && window.matchMedia("(hover: hover)").matches;
+  document.querySelectorAll(".tc").forEach(function(card){
+    var v = card.querySelector("video"); if (!v) return;
+    function play(){ if (reduce) return; card.classList.add("playing"); try { v.currentTime = 0; } catch(e){} var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+    v.addEventListener("ended", function(){ /* hold the finished frame */ });
+    if (canHover){
+      card.addEventListener("mouseenter", play);
+      card.addEventListener("mouseleave", function(){ v.pause(); card.classList.remove("playing"); });
+    } else if ("IntersectionObserver" in window){
+      new IntersectionObserver(function(es){ if (es[0].isIntersecting){ play(); } }, {threshold:.6}).observe(card);
+    }
+  });
+
+  var sheet = document.getElementById("sheet"), body = document.getElementById("sheetBody");
+  function openSheet(which){
+    var tpl = document.getElementById("doc-" + (which === "legal" ? "support" : which)); if (!tpl) return;
+    body.innerHTML = ""; body.appendChild(tpl.content.cloneNode(true));
+    sheet.classList.add("open"); document.body.style.overflow = "hidden"; sheet.scrollTop = 0;
+    if (which === "legal"){ var t = body.querySelector("#terms"); if (t) setTimeout(function(){ t.scrollIntoView({block:"start"}); }, 30); }
+  }
+  function closeSheet(){ sheet.classList.remove("open"); document.body.style.overflow = ""; }
+  document.addEventListener("click", function(e){
+    var o = e.target.closest("[data-sheet]"); if (o){ e.preventDefault(); openSheet(o.getAttribute("data-sheet")); return; }
+    if (e.target.closest("[data-close]")){ e.preventDefault(); closeSheet(); }
+  });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeSheet(); });
+})();
+</script>
+
+<script>
+/* Newsletter signup — MailerLite. MAILERLITE_ACTION empty = the form says signups are closed
+   rather than silently swallowing addresses. See the comment block on the markup for why this posts
+   through an iframe instead of fetch(). */
+(function(){
+  var MAILERLITE_ACTION = "https://assets.mailerlite.com/jsonp/2640576/forms/198813489603544317/subscribe";
+
+  var box  = document.getElementById('signup');
+  var form = document.getElementById('signupForm');
+  var msg  = document.getElementById('signupMsg');
+  if(!form) return;
+
+  function say(t, cls){ msg.textContent = t; msg.className = 'msg ' + (cls||''); }
+
+  if(MAILERLITE_ACTION){ form.action = MAILERLITE_ACTION; }
+
+  form.addEventListener('submit', function(e){
+    var email = form['fields[email]'].value.trim();
+    if(form.website.value){ e.preventDefault(); return; }                 // honeypot tripped
+    if(!email || email.indexOf('@') < 1){
+      e.preventDefault(); say('That email address does not look right.','err'); return;
+    }
+    if(!MAILERLITE_ACTION){
+      e.preventDefault(); say('Signups are not open yet \u2014 check back shortly.','err'); return;
+    }
+    // Let the native POST proceed into the hidden iframe.
+    form.querySelector('button').disabled = true;
+    say('Signing you up\u2026','');
+    setTimeout(function(){
+      box.setAttribute('data-done','1');
+      say('Thanks \u2014 you\u2019re on the list.','ok');
+    }, 700);
+  });
+})();
+</script>
+</body>
+</html>
