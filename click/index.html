@@ -415,6 +415,7 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
 @media (max-width:640px){ .foot .col{margin-left:0;text-align:left} }
 
 /* ---------- document sheets ---------- */
+.store.soon{cursor:default;opacity:.8}
 .sheet{position:fixed;inset:0;z-index:120;display:none;background:var(--alu-a);overflow-y:auto}
 .sheet.open{display:block}
 .sheet-in{max-width:740px;margin:0 auto;padding:22px var(--gut) 90px}
@@ -445,7 +446,7 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
       <a href="#edit" class="hs">Edit</a>
       <a href="#record" class="hs">Record</a>
       <a href="#pricing">Pricing</a>
-      <a class="pill sm" href="#pricing">Download <span class="k">free</span></a>
+      <a class="pill sm" href="#download">Mac App Store <span class="k">soon</span></a>
     </nav>
   </div>
 </header>
@@ -457,10 +458,10 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
   <h1>Capture it. Mark it. Send it.</h1>
   <p class="lead">Click lives in your menu bar. One key drops the overlay, and the capture lands in an editor built for arrows, redaction, and getting out of your way.</p>
   <div class="ctas">
-    <a class="pill" href="#pricing">Download for Mac <span class="k">free</span></a>
+    <a class="pill" href="#download">Coming to the Mac App Store</a>
     <a class="pill ghost" href="#capture">How it works</a>
   </div>
-  <p class="fine">Free for capture, forever · Pro free for 7 days, then $47.99 a year · No account</p>
+  <p class="fine">Free for capture, forever · No account. No cloud. Your captures stay on your Mac.</p>
 
   <div class="win hero-win" id="heroWin">
     <div class="lights"><i></i><i></i><i></i></div>
@@ -487,11 +488,12 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
         <div class="mbar"><i class="bz"></i><i></i><i style="width:26px;border-radius:3px"></i></div>
         <div class="pop" aria-label="Click's menu-bar menu">
           <div class="hd"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="12" cy="12" r="3"/></svg>Click<span class="pro">♛ Pro</span></div>
-          <div class="row"><svg viewBox="0 0 24 24"><path d="M4 9V6a2 2 0 0 1 2-2h3M15 4h3a2 2 0 0 1 2 2v3M20 15v3a2 2 0 0 1-2 2h-3M9 20H6a2 2 0 0 1-2-2v-3"/></svg>Capture Region<span class="sc">⌘`</span></div>
-          <div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>Capture Window<span class="sc">⌘1</span></div>
-          <div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" stroke-dasharray="3 2"/></svg>Capture Full Screen<span class="sc">⌘2</span></div>
+          <div class="row"><svg viewBox="0 0 24 24"><path d="M4 9V6a2 2 0 0 1 2-2h3M15 4h3a2 2 0 0 1 2 2v3M20 15v3a2 2 0 0 1-2 2h-3M9 20H6a2 2 0 0 1-2-2v-3"/></svg>Capture<span class="sc">⌘`</span></div>
           <hr>
           <div class="row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>Record Screen<span class="sc">⇧⌘`</span></div>
+          <hr>
+          <div class="row"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>Open Editor</div>
+          <div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg>Library</div>
           <hr>
           <div class="row quit"><svg viewBox="0 0 24 24"><path d="M12 3v8M6.3 7.3a8 8 0 1 0 11.4 0"/></svg>Quit Click</div>
         </div>
@@ -499,7 +501,7 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
       <div class="txt">
         <div class="cap">1 · Menu bar</div>
         <h3>No Dock icon. No window.</h3>
-        <p>Click is a menu-bar agent. Four global shortcuts do the work; the menu is there for the day you forget one.</p>
+        <p>Click is a menu-bar agent. Two global shortcuts do the work, ⌘` to capture and ⇧⌘` to record, and you can change both. The menu is there for the day you forget one.</p>
       </div>
     </div>
 
@@ -518,7 +520,7 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
       <div class="txt">
         <div class="cap">2 · Overlay</div>
         <h3>Region, window, or screen — same key.</h3>
-        <p>Switch modes from the pill without leaving the overlay. Arrow keys nudge, the readout shows pixels, and the screen stays put underneath.</p>
+        <p>Space switches modes without leaving the overlay. Hold ⇧ for a square, ⌥ to draw from the centre; the readout shows pixels, and the screen stays put underneath.</p>
       </div>
     </div>
   </div>
@@ -547,7 +549,7 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
     </div>
     <div class="cine-cap">
       <div class="cap">3 · Quick Access → Editor</div>
-      <p><b>Copied already. Now decide.</b> The card floats for eight seconds — copy again, save, or open the editor. Ignore it and it leaves on its own.</p>
+      <p><b>Copied already. Now decide.</b> The card floats for eight seconds — drag it into another app, save it, or press ↩ to open the editor. Ignore it and it leaves on its own.</p>
     </div>
   </div>
 </section>
@@ -584,13 +586,13 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
   </div>
   <div class="tgrid">
     <figure class="tc rv"><div class="tv"><img src="assets/tool-arrow.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-arrow.webp"><source src="assets/tool-arrow.mp4" type="video/mp4"></video></div><figcaption><b>Curved arrow</b><span>Draw it, then bend it — the midpoint handles pull the curve. Straight, curved or elbowed; swap the head without redrawing.</span></figcaption></figure>
-    <figure class="tc rv"><div class="tv"><img src="assets/tool-blur.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-blur.webp"><source src="assets/tool-blur.mp4" type="video/mp4"></video></div><figcaption><b>Blur</b><span>Redact the phone number, not the whole message. Blur, pixelate or solid, with intensity on a slider.</span></figcaption></figure>
+    <figure class="tc rv"><div class="tv"><img src="assets/tool-blur.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-blur.webp"><source src="assets/tool-blur.mp4" type="video/mp4"></video></div><figcaption><b>Blur</b><span>Redact the phone number, not the whole message. Blur or pixelate, with intensity on a slider — or invert it to hide everything except the selection.</span></figcaption></figure>
     <figure class="tc rv"><div class="tv"><img src="assets/tool-spotlight.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-spotlight.webp"><source src="assets/tool-spotlight.mp4" type="video/mp4"></video></div><figcaption><b>Spotlight</b><span>Dim everything except the thing you mean. One drag over the artboard that matters.</span></figcaption></figure>
     <figure class="tc rv"><div class="tv"><img src="assets/tool-text.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-text.webp"><source src="assets/tool-text.mp4" type="video/mp4"></video></div><figcaption><b>Text</b><span>Type on the picture. Resize the box and the text reflows; double-click to edit later.</span></figcaption></figure>
     <figure class="tc rv"><div class="tv"><img src="assets/tool-number.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-number.webp"><source src="assets/tool-number.mp4" type="video/mp4"></video></div><figcaption><b>Numbered steps</b><span>Badges count themselves. Delete one and the rest renumber.</span></figcaption></figure>
-    <figure class="tc rv"><div class="tv"><img src="assets/tool-shape.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-shape.webp"><source src="assets/tool-shape.mp4" type="video/mp4"></video></div><figcaption><b>Shape</b><span>Rectangle or ellipse, outlined or filled. Corner radius and stroke on a slider.</span></figcaption></figure>
+    <figure class="tc rv"><div class="tv"><img src="assets/tool-shape.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-shape.webp"><source src="assets/tool-shape.mp4" type="video/mp4"></video></div><figcaption><b>Shape</b><span>Rectangle, ellipse or line, outlined or filled. Stroke, dash and opacity on the bar.</span></figcaption></figure>
     <figure class="tc rv"><div class="tv"><img src="assets/tool-highlight.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-highlight.webp"><source src="assets/tool-highlight.mp4" type="video/mp4"></video></div><figcaption><b>Highlight</b><span>A marker band that sits under the text, so what’s underneath stays readable.</span></figcaption></figure>
-    <figure class="tc rv"><div class="tv"><img src="assets/tool-compare.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-compare.webp"><source src="assets/tool-compare.mp4" type="video/mp4"></video></div><figcaption><b>Compare &amp; split</b><span>Two versions in one frame. Drag the knob to set the gap; swap either side any time.</span></figcaption></figure>
+    <figure class="tc rv"><div class="tv"><img src="assets/tool-compare.webp" alt="" width="1024" height="640"><video muted playsinline preload="metadata" poster="assets/tool-compare.webp"><source src="assets/tool-compare.mp4" type="video/mp4"></video></div><figcaption><b>Compare &amp; split</b><span>Two versions in one frame — side by side, or with a before/after slider.</span></figcaption></figure>
   </div>
 </section>
 
@@ -626,7 +628,7 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
       <thead><tr><th>Capability</th><th class="c">Free</th><th class="c">Pro</th></tr></thead>
       <tbody>
         <tr class="grp"><td colspan="3">Capture</td></tr>
-        <tr><td>Region, window and full-screen capture <small>Crosshair, live pixel readout, arrow-key nudge</small></td><td class="c"><span class="dot"></span></td><td class="c"><span class="dot"></span></td></tr>
+        <tr><td>Region, window and full-screen capture <small>Crosshair, live pixel readout, ⇧ square, ⌥ from centre</small></td><td class="c"><span class="dot"></span></td><td class="c"><span class="dot"></span></td></tr>
         <tr><td>Copy to clipboard · Quick Access card</td><td class="c"><span class="dot"></span></td><td class="c"><span class="dot"></span></td></tr>
         <tr><td>Save as PNG</td><td class="c"><span class="dot"></span></td><td class="c"><span class="dot"></span></td></tr>
         <tr class="grp"><td colspan="3">Edit</td></tr>
@@ -648,44 +650,45 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
   <div class="shead center">
     <div class="cap">Pricing</div>
     <h2 class="h2">Start free. Upgrade if it earns it.</h2>
-    <p class="lead">Buy direct or on the Mac App Store — the app is identical. One licence covers the Macs you personally use.</p>
+    <p class="lead">Click is sold only on the Mac App Store. Pro is bought inside the app and follows your Apple Account to every Mac you use.</p>
   </div>
 
   <div class="freebar rv">
     <div><div class="cap" style="margin-bottom:6px">Click Free</div><div class="price"><b style="font-size:2rem">$0</b><span>forever</span></div></div>
     <p>Region, window and full-screen capture, clipboard copy and PNG save, plus the editor’s background and drop shadow. No watermark, no account, no expiry — this tier never runs out.</p>
-    <a class="pill ghost" href="#download">Download</a>
+    <a class="pill ghost" href="#download">Free on the Mac App Store</a>
   </div>
 
   <div class="plans">
     <div class="plan rv">
       <div class="cap">Pro · Monthly</div>
       <div class="price"><b>$4.99</b><span>/ month</span></div>
-      <ul><li>Everything in Free</li><li>Every annotation tool + recording</li><li>Recording + camera bubble</li><li>Library, HEIC/PDF, 2× export</li><li>Cancel any time</li></ul>
-      <a class="pill ghost" href="#download">Subscribe monthly</a>
-      <p class="note">Renews monthly until cancelled.</p>
+      <ul><li><b>7 days free</b>, then $4.99</li><li>Annotation, crop and redaction</li><li>Recording, camera bubble, mic &amp; system audio</li><li>Compare, Library, HEIC/PDF and 2× export</li><li>Cancel any time</li></ul>
+      <a class="pill ghost" href="#download">Subscribe in the app</a>
+      <p class="note">Free for 7 days, then renews monthly until cancelled.</p>
     </div>
     <div class="plan pick rv">
       <div class="cap">Pro · Yearly</div>
       <div class="price"><b>$47.99</b><span>/ year</span></div>
       <ul><li><b>7 days free</b>, then $47.99</li><li>Everything in Pro Monthly</li><li>$4.00 a month, billed yearly</li><li>All updates while subscribed</li><li>Cancel any time</li></ul>
-      <a class="pill accent" href="#download">Start 7-day free trial</a>
+      <a class="pill accent" href="#download">Start the trial in the app</a>
       <p class="note">Free for 7 days, then renews yearly until cancelled.</p>
     </div>
     <div class="plan rv">
       <div class="cap">Pro · Lifetime</div>
       <div class="price"><b>$129</b><span>once</span></div>
-      <ul><li>Everything in Pro, permanently</li><li>No renewal, no expiry</li><li>All future updates</li><li>Moves between your Macs</li><li>Refunds handled by Apple</li></ul>
-      <a class="pill " href="#download">Buy lifetime</a>
-      <p class="note">One payment. Yours to keep.</p>
+      <ul><li>Everything in Pro, permanently</li><li>No renewal, no expiry</li><li>All future updates</li><li>Restores on every Mac with your Apple Account</li><li>Refunds handled by Apple</li></ul>
+      <a class="pill " href="#download">Buy in the app</a>
+      <p class="note">One payment, no trial. Yours to keep.</p>
     </div>
   </div>
 
   <div class="stores" id="download">
-    <a class="store" href="https://apps.apple.com/app/click">
+    <!-- Until 1.0 is approved this is NOT a link. On approval: turn this div into a link to the real App Store URL and change the label to Download on the. -->
+    <div class="store soon" aria-disabled="true">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.6.9-.8 0-1.9-.9-3.1-.8-1.6 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 3 2.3 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.1.8 1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.7-3.6zM14.2 5.5c.7-.8 1.1-2 1-3.2-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.5 2.9-1.3z"/></svg>
-      <span><u>Download on the</u><strong>Mac App Store</strong></span>
-    </a>
+      <span><u>Coming soon to the</u><strong>Mac App Store</strong></span>
+    </div>
   </div>
 
   <div class="terms">
@@ -702,7 +705,7 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
     <details><summary>Can Click record my screen with my webcam?</summary><p>Yes. Click records a region, a window or the full screen with optional system audio and microphone, plus a draggable camera bubble. Screen recording is a Pro feature.</p></details>
     <details><summary>Does Click upload my screenshots anywhere?</summary><p>No. Captures are written to the folder you choose and stay on your Mac. Click has no account system and no background uploader. The only thing it ever sends is anonymous usage statistics — which feature was used, never what you captured — and you can switch those off in Settings.</p></details>
     <details><summary>Is there a free trial?</summary><p>Yes. Monthly and Yearly both start with a 7-day free trial — one per Apple Account, whichever plan you start it on. You get everything — every annotation tool, recording, the library, HEIC and PDF export — for 7 days at no charge. You are not charged when the trial starts, Apple reminds you before it ends, and cancelling takes one click. Capture, and the editor’s background and drop shadow, stay free permanently and need no trial at all.</p></details>
-    <details><summary>Can I get a refund?</summary><p>Direct purchases: yes, within 14 days, no questions asked. App Store purchases are refunded by Apple through Report a Problem, since Apple is the seller of record there.</p></details>
+    <details><summary>Can I get a refund?</summary><p>Click is sold only on the Mac App Store, so refunds are handled by Apple at reportaproblem.apple.com.</p></details>
     <details><summary>Why does Click need Screen Recording permission?</summary><p>macOS treats every kind of screen capture, including still screenshots, as screen recording. Click asks once, on first capture, with the standard system prompt. Camera and microphone are only requested if you turn them on for a recording.</p></details>
   </div>
 </section>
@@ -711,10 +714,9 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
 <section class="wrap closer">
   <span class="ico" role="img" aria-label="Click app icon"></span>
   <h2>Take the next screenshot with it.</h2>
-  <p class="lead" style="margin:16px auto 0;max-width:40ch">Free to download. You'll know within a day whether Pro is worth $4.00 a month to you.</p>
+  <p class="lead" style="margin:16px auto 0;max-width:40ch">Free to start. You'll know within a day whether Pro is worth $4.00 a month to you.</p>
   <div class="ctas">
-    <a class="pill" href="#pricing">Download for Mac <span class="k">free</span></a>
-    <a class="pill ghost" href="https://apps.apple.com/app/click">Mac App Store</a>
+    <a class="pill" href="#download">Coming to the Mac App Store</a>
   </div>
 
   <!-- ============================================================================================
@@ -743,7 +745,7 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
     <p class="consent">Occasional release notes and the odd feature survey. No spam, unsubscribe in one click. We never share your address.</p>
     <p class="msg" id="signupMsg" role="status" aria-live="polite"></p>
   </div>
-  <p class="fine" style="margin-top:18px;font-size:13px;color:var(--ink-3)">macOS 14 or later · Apple silicon &amp; Intel · Notarized · 14-day refund</p>
+  <p class="fine" style="margin-top:18px;font-size:13px;color:var(--ink-3)">macOS 14 or later · Apple silicon &amp; Intel · Mac App Store only</p>
 </section>
 </main>
 
@@ -809,7 +811,7 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
   <p>Because Click holds no account, there is normally nothing of yours for us to export or delete. If you have emailed support or joined the newsletter, write to <a href="mailto:SirRyanLynch@gmail.com">SirRyanLynch@gmail.com</a> and we will delete that correspondence and your address on request. Anonymous usage signals carry no identifier, so they cannot be traced back to you or individually deleted &mdash; switching the setting off stops any further signals.</p>
 
   <h3>Children</h3>
-  <p>Click is not directed at children under 13 and collects no personal information from anyone.</p>
+  <p>Click is not directed at children under 13 and does not knowingly collect personal information from children.</p>
 
   <h3>Changes</h3>
   <p>If this policy changes materially, the date above changes and the new version is published here before it takes effect.</p>
@@ -862,7 +864,7 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
   "operatingSystem":"macOS 14.0 or later","applicationCategory":"UtilitiesApplication",
   "applicationSubCategory":"Screenshot & Screen Recording",
   "description":"Click is a fast macOS screenshot tool and screen recorder. Capture a region, window, or full screen; annotate with arrows, text, shapes, blur, and highlights; record video with a camera bubble; and copy or save instantly.",
-  "url":"https://sirryanlynch.github.io/click/","downloadUrl":"https://apps.apple.com/app/click","softwareVersion":"1.0",
+  "url":"https://sirryanlynch.github.io/click/","softwareVersion":"1.0",
   "featureList":["Region, window, and full-screen capture","Annotate: arrows, text, shapes, numbered steps, blur, highlight","Screen recording with system audio, microphone, and camera bubble","Side-by-side compare and split screenshots","One-click copy to clipboard or save to file","Menu-bar app with global keyboard shortcuts"],
   "offers":[
     {"@type":"Offer","name":"Click Free","price":"0","priceCurrency":"USD"},
@@ -878,7 +880,7 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
     {"@type":"Question","name":"How do I annotate a screenshot on a Mac?","acceptedAnswer":{"@type":"Answer","text":"Take a screenshot with Click and the editor opens on the capture. Use the toolbar to add arrows, text, rectangles, ellipses, numbered steps, highlights, or a blur to hide sensitive information. Every mark stays editable until you export, then copy to the clipboard or save as PNG, HEIC or PDF."}},
     {"@type":"Question","name":"Can Click record my screen with my webcam?","acceptedAnswer":{"@type":"Answer","text":"Yes. Click records a region, a window, or the full screen with optional system audio and microphone, plus a draggable camera bubble you can place in any corner. Screen recording is a Pro feature."}},
     {"@type":"Question","name":"Does Click upload my screenshots anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Captures are written to the folder you choose and stay on your Mac. Click has no account system and no background uploader. The only thing it ever sends is anonymous usage statistics — which feature was used, never what you captured — and you can switch those off in Settings."}},
-    {"@type":"Question","name":"Can I get a refund for Click?","acceptedAnswer":{"@type":"Answer","text":"Direct purchases are refundable within 14 days for any reason. Mac App Store purchases are refunded by Apple through Report a Problem, since Apple is the seller of record there."}}
+    {"@type":"Question","name":"Can I get a refund for Click?","acceptedAnswer":{"@type":"Answer","text":"Click is sold only on the Mac App Store, so refunds are handled by Apple at reportaproblem.apple.com."}}
   ]
 }
 </script>

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://sirryanlynch.github.io/bezel/sitemap.xml

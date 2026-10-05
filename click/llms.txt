@@ -1,25 +1,23 @@
 # Click
 
-> Click is a fast, native macOS screenshot tool and screen recorder. It captures a region,
-> window, or the full screen, opens the capture in an annotation editor (arrows, text, shapes,
-> numbered steps, highlight, blur redaction), and records video with system audio, microphone
-> and a draggable camera bubble. It is a menu-bar app with no Dock icon.
+> Click (App Store name "Click: Screenshot & Record") is a native macOS menu-bar app for capturing,
+> marking up, redacting and recording the screen. One hotkey opens a capture overlay (region,
+> window or screen); the capture is copied to the clipboard at once and opens in an annotation
+> editor with one keypress. The same overlay records video with system audio, microphone and a
+> camera bubble. No account. No cloud. Your captures stay on your Mac.
 
-- Platform: macOS 14.0 Sonoma or later, Apple silicon and Intel
-- Engine: ScreenCaptureKit; overlay in AppKit + Core Graphics; written in Swift
-- Distribution: Mac App Store only
-- Pricing: Free forever for capture, clipboard copy, PNG save and the editor’s background + drop shadow.
-  Pro is $4.99/month, $47.99/year, or $129 one-time (Lifetime).
-- Free tier: region / window / full-screen capture, copy to clipboard, save as PNG, and the editor’s background and drop shadow. No watermark. Annotation tools and recording are Pro.
-- Pro tier: annotation editor, blur redaction, numbered steps, compare & split, screen recording,
-  camera bubble, mic and system audio, capture library, HEIC and PDF export, 2x Retina export.
-- Privacy: no account, no telemetry, no uploads. Captures stay on the user's Mac.
-- Shortcuts: Region Shift-Cmd-4, Record Shift-Cmd-5, Full screen Shift-Cmd-3,
-  Window Shift-Cmd-6, History Shift-Cmd-H.
-- Positioning: a lightweight alternative to CleanShot X, Shottr, Snagit and Xnapper.
-- Refunds: 14 days on direct purchases; App Store purchases via Apple's Report a Problem.
+- Platform: macOS 14 Sonoma or later (microphone recording needs macOS 15); Apple silicon and Intel. Written in Swift on ScreenCaptureKit.
+- Distribution: Mac App Store only. Version 1.0 is in App Review; not yet available.
+- Category: Productivity (secondary: Graphics & Design).
+- Pricing: Free $0 forever. Pro Monthly $4.99 with a 7-day free trial. Pro Yearly $47.99 with a 7-day free trial. Pro Lifetime $129, one payment, no trial.
+- Free: region / window / screen capture, copy to clipboard, save as PNG, canvas background and drop shadow. No watermark.
+- Pro: annotation tools, crop, redaction, screen recording, camera bubble, mic and system audio, Compare, the Library, HEIC / PDF / 2x export.
+- Shortcuts: Cmd-` to capture, Shift-Cmd-` to record. Both are remappable in Settings > Hotkeys.
+- Privacy: no account, no cloud upload. The app sends anonymous usage statistics (which tools are used, never what was captured); users can turn them off in Settings > General.
+- Refunds: handled by Apple (reportaproblem.apple.com), since Click is sold only on the Mac App Store.
 
 ## Pages
-- https://sirryanlynch.github.io/click/ : product overview, feature comparison, pricing
+
+- https://sirryanlynch.github.io/click/ : product overview, features, pricing
 - https://sirryanlynch.github.io/click/privacy.html : privacy policy
-- https://sirryanlynch.github.io/click/support.html : support, system requirements, refunds, terms and EULA
+- https://sirryanlynch.github.io/click/support.html : support, system requirements, refunds, terms
