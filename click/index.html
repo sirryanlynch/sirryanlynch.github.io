@@ -181,6 +181,7 @@ kbd{
 .win video,.win img{width:100%;height:auto}
 .hero-win{margin:clamp(44px,6vw,72px) auto 0;max-width:1180px}
 .hero-win .lights{height:32px}
+.win.film video{display:block;aspect-ratio:16/9;object-fit:cover;background:#efece7}
 .footnote{margin-top:16px;font-size:13px;color:var(--ink-3);text-align:center}
 .footnote b{font-weight:600;color:var(--ink-2)}
 
@@ -463,13 +464,12 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
   </div>
   <p class="fine">Free for capture, forever · No account. No cloud. Your captures stay on your Mac.</p>
 
-  <div class="win hero-win" id="heroWin">
-    <div class="lights"><i></i><i></i><i></i></div>
-    <video autoplay muted loop playsinline preload="auto" poster="assets/reel-poster.webp" aria-label="Highlight reel of the Click editor across three captures: blur, curved arrow, spotlight, text, numbered steps, highlight, compare, then export">
-      <source src="assets/reel.mp4" type="video/mp4">
+  <div class="win hero-win film" id="heroWin">
+    <video autoplay muted loop playsinline preload="auto" poster="assets/film-share.webp" aria-label="Capture, edit, send: part of an email is captured, marked up with an arrow and a redaction, then dropped into a team chat">
+      <source src="assets/film-share.mp4" type="video/mp4">
     </video>
   </div>
-  <p class="footnote"><b>Actual editor footage.</b> Every cut is the interface that ships.</p>
+  <p class="footnote"><b>Capture → Edit → Send.</b> One keystroke to a finished, shareable picture.</p>
 </section>
 
 <!-- ============================ CAPTURE ============================ -->
@@ -566,8 +566,8 @@ footer{border-top:1px solid var(--hair-2);padding-block:30px 50px}
     <div>
       <div class="win rv">
         <div class="lights"><i></i><i></i><i></i></div>
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/editor-annotated.webp" aria-label="The Click editor: an arrow, a text note, numbered steps and a blur redaction are added to a capture, then it is copied">
-          <source src="assets/annotate.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/film-mark.webp" aria-label="Marking up a capture: an arrow, a box and a note">
+          <source src="assets/film-mark.mp4" type="video/mp4">
         </video>
       </div>
       <div class="strip rv" aria-label="The editor toolbar"><img src="assets/toolbar.webp" alt="The editor toolbar" width="1600" height="52"></div>
