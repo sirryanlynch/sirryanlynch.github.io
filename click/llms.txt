@@ -7,9 +7,9 @@
 > camera bubble. No account. No cloud. Your captures stay on your Mac.
 
 - Platform: macOS 14 Sonoma or later (microphone recording needs macOS 15); Apple silicon and Intel. Written in Swift on ScreenCaptureKit.
-- Distribution: Mac App Store only. Version 1.0 is in App Review; not yet available.
+- Distribution: Mac App Store only. Version 1.0.2 is live at https://apps.apple.com/us/app/id6815072800?mt=12. There is no direct download and no website license checkout. Pro is an in-app purchase.
 - Category: Productivity (secondary: Graphics & Design).
-- Pricing: Free $0 forever. Pro Monthly $4.99 with a 7-day free trial. Pro Yearly $47.99 with a 7-day free trial. Pro Lifetime $129, one payment, no trial.
+- Pricing: Free $0 forever. Pro Monthly $5.99 with a 7-day free trial. Pro Yearly $39.99 with a 7-day free trial ($3.33 a month, billed yearly). Pro Lifetime $79.99, one payment, no trial.
 - Free: region / window / screen capture, copy to clipboard, save as PNG, canvas background and drop shadow. No watermark.
 - Pro: annotation tools, crop, redaction, screen recording, camera bubble, mic and system audio, Compare, the Library, HEIC / PDF / 2x export.
 - Shortcuts: Cmd-` to capture, Shift-Cmd-` to record. Both are remappable in Settings > Hotkeys.
