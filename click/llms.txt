@@ -21,3 +21,5 @@
 - https://sirryanlynch.github.io/click/ : product overview, features, pricing
 - https://sirryanlynch.github.io/click/privacy.html : privacy policy
 - https://sirryanlynch.github.io/click/support.html : support, system requirements, refunds, terms
+- https://sirryanlynch.github.io/click/how-to-annotate-a-bug-report.html : how to annotate a bug report on a Mac
+- https://sirryanlynch.github.io/click/how-to-redact-a-screenshot.html : how to redact a screenshot before you share it

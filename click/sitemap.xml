@@ -3,4 +3,6 @@
   <url><loc>https://sirryanlynch.github.io/click/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://sirryanlynch.github.io/click/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://sirryanlynch.github.io/click/support.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://sirryanlynch.github.io/click/how-to-annotate-a-bug-report.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sirryanlynch.github.io/click/how-to-redact-a-screenshot.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
